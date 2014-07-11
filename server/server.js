@@ -12,18 +12,19 @@ var app = express();
 //     next();
 // }); 
 
-require('./config/expressConfig.js')(app,express);
+require('./config/config_express.js')(app,express);
 
 
-fs.readdirSync("./server/controllers").forEach(function(file) {
+
+fs.readdirSync(__dirname + '/controllers').forEach(function(file) {
     require("./controllers/" + file)(app);
 });
 
-app.namespace('/api/v1', function(){
-    fs.readdirSync("./server/api/v1").forEach(function(file) {
-        require("./api/v1/" + file)(app);
-    });
-});
+// app.namespace('/api/v1', function(){
+//     fs.readdirSync("./server/api/v1").forEach(function(file) {
+//         require("./api/v1/" + file)(app);
+//     });
+// });
 
 
 app.listen(app.get("port"), function() {
