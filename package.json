@@ -1,0 +1,26 @@
+{
+  "name": "baconpress",
+  "version": "0.0.0",
+  "description": "A MVC framework with Node.js + Express.js",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/danilodeveloper/baconpress.git"
+  },
+  "keywords": [
+    "mvc",
+    "express.js",
+    "node.js",
+    "expressjs",
+    "nodejs"
+  ],
+  "author": "Danilo Barsotti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danilodeveloper/baconpress/issues"
+  },
+  "homepage": "https://github.com/danilodeveloper/baconpress"
+}
