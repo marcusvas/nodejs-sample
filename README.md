@@ -1,4 +1,4 @@
 baconpress
 ==========
 
-A MVC framework with Node.js + Express.js
+A template project that works with Node.js + Express.js
