@@ -32,6 +32,7 @@
     "express-session": "^1.6.4",
     "method-override": "^2.1.0",
     "morgan": "^1.1.1",
-    "serve-favicon": "^2.0.1"
+    "serve-favicon": "^2.0.1",
+    "walk": "^2.3.3"
   }
 }
