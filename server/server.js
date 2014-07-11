@@ -20,6 +20,11 @@ fs.readdirSync(__dirname + '/controllers').forEach(function(file) {
     require("./controllers/" + file)(app);
 });
 
+app.all('/api', function(){
+   app.all('/v1', function(){
+      console.log('test'); 
+   });
+});
 
 // require('./util/api_router_util.js')(app, __dirname);
 
