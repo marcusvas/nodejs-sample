@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/danilodeveloper/baconpress/issues"
   },
-  "homepage": "https://github.com/danilodeveloper/baconpress"
+  "homepage": "https://github.com/danilodeveloper/baconpress",
+  "dependencies": {
+    "express": "^4.5.1"
+  }
 }
