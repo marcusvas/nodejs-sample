@@ -1,11 +1,11 @@
 'use strict';
 
 var express = require('express'),
-    fs = require('fs'),
-    routes = require('./util/routes_util.js');
-
+    routes = require('./util/routes_util.js'),
+    endpoint = require('./config/endpoints.js').endpoints;
+    
 var app = express();
-var endpoint = require('./config/endpoints.js').endpoints;
+ 
 
 // app.all('/', function(req, res, next){
 //     console.log('all!!!!!');
