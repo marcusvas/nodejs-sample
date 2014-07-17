@@ -2,7 +2,7 @@
 
 var express = require('express'),
     fs = require('fs'),
-    routes = require('./util/require_routes.js');
+    routes = require('./util/routes_util.js');
 
 var app = express();
 var endpoint = require('./config/endpoints.js').endpoints;
