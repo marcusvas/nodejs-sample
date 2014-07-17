@@ -1,13 +1,12 @@
 'use strict'
 var dir = require('node-dir');
 
-module.exports.createAll = function (directory, endpoint, express, app) {
-  var api = express.Router();
+module.exports.createAll = function (directory, endpoint, app, router) {
   dir.files(directory, function(err, files) {
     if (err) throw err;
     files.forEach(function(file){
-      api.all(require(file)(app));
+      require(file)(router);
     });
-    api.use(endpoint, api);
+    app.use(endpoint, router);
   });
 }

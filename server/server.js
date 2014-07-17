@@ -19,7 +19,7 @@ fs.readdirSync(__dirname + '/controllers').forEach(function(file) {
     require("./controllers/" + file)(app);
 });
 
-routes.createAll(__dirname + '/api', '/api', express, app);
+routes.createAll(__dirname + '/api', '/api', app, express.Router());
 
 //require('./util/api_router_util.js')(app, __dirname);
 
