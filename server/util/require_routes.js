@@ -1,7 +1,7 @@
 'use strict'
 var dir = require('node-dir');
 
-module.exports.createAll = function (directory, endpoint, app, router) {
+module.exports.create = function (directory, endpoint, app, router) {
   dir.files(directory, function(err, files) {
     if (err) throw err;
     files.forEach(function(file){

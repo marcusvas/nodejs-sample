@@ -5,7 +5,7 @@ var express = require('express'),
     routes = require('./util/require_routes.js');
 
 var app = express();
-
+var endpoint = require('./config/endpoints.js').endpoints;
 
 // app.all('/', function(req, res, next){
 //     console.log('all!!!!!');
@@ -13,24 +13,11 @@ var app = express();
 //     next();
 // }); 
 
-require('./config/config_express.js')(app,express);
+require('./config/config_express.js').core(app,express);
 
-fs.readdirSync(__dirname + '/controllers').forEach(function(file) {
-    require("./controllers/" + file)(app);
-});
 
-routes.createAll(__dirname + '/api', '/api', app, express.Router());
-
-//require('./util/api_router_util.js')(app, __dirname);
-
-// fs.readdirSync(__dirname + '/api').forEach(function(file) {
-//     console.log(file);
-// });
-// app.namespace('/api/v1', function(){
-//     fs.readdirSync("./server/api/v1").forEach(function(file) {
-//         require("./api/v1/" + file)(app);
-//     });
-// });
+routes.create(__dirname + endpoint.root.directory, endpoint.root.route, app, express.Router());
+routes.create(__dirname + endpoint.api.v1.directory, endpoint.api.v1.route, app, express.Router());
 
 
 app.listen(app.get("port"), function() {
