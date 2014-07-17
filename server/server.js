@@ -1,7 +1,8 @@
 'use strict';
 
 var express = require('express'),
-    fs = require('fs');
+    fs = require('fs'),
+    routes = require('./util/require_routes.js');
 
 var app = express();
 
@@ -14,12 +15,11 @@ var app = express();
 
 require('./config/config_express.js')(app,express);
 
-
-
 fs.readdirSync(__dirname + '/controllers').forEach(function(file) {
     require("./controllers/" + file)(app);
 });
 
+routes.createAll(__dirname + '/api', '/api', express, app);
 
 //require('./util/api_router_util.js')(app, __dirname);
 
