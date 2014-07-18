@@ -37,7 +37,12 @@ module.exports = {
             swig.setDefaults({ cache: false });
         }
         app.use(cookieParser());
-        app.use(session({secret: 'alter this'}));
+        app.use(session({
+            secret: 'alter this',
+            resave: true,
+            saveUninitialized: true
+            
+        }));
         
         app.use(passport.initialize());
         app.use(passport.session());
