@@ -6,16 +6,30 @@ var morgan = require('morgan'),
     favicon = require('serve-favicon'),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
-    path = require('path');
+    path = require('path'),
+    swig = require('swig');
+    
 
 module.exports = {
     core : function(app, express) {
         app.set("port", process.env.PORT || 3000);
         var env = process.env.NODE_ENV || 'development';
         
+        app.engine('html', swig.renderFile);
+        app.set('view engine', 'html');
+        app.set('views', path.resolve('..','client','views'));
+        
         if('development' == env) {
         	app.use(morgan('dev'));
         	app.use(errorHandler());
+        	
+        	// Should always cache templates in a production environment.
+            // Don't leave both of these to `false` in production!
+            
+        	// To disable express cache
+        	app.set('view cache', false);
+        	// To disable Swig's cache
+            swig.setDefaults({ cache: false });
         }
         
         app.use(compression());
@@ -24,6 +38,6 @@ module.exports = {
         app.use(bodyParser.json());
         app.use(methodOverride());
         
-        app.use("/static", express.static(path.resolve("./client/")));
+        app.use("/static", express.static(path.resolve('..','client','public')));
     }
 }
