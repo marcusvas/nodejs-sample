@@ -49,5 +49,15 @@ module.exports = {
         app.use(methodOverride());
         
         app.use("/static", express.static(path.resolve('..','client','public')));
+        
+        // passport config
+        // TODO: move this to /coonfig/passport.js
+        var Account = require(path.resolve('..','models','user.js'));
+        passport.use(new LocalStrategy(Account.authenticate()));
+        passport.serializeUser(Account.serializeUser());
+        passport.deserializeUser(Account.deserializeUser());
+        
+        // mongoose
+        mongoose.connect('mongodb://localhost/passport_local_mongoose');
     }
 };
