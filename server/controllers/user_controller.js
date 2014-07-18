@@ -1,5 +1,8 @@
 module.exports = function(app) {
 	app.get("/", function(req, res) {
-		console.log('ok');
+		res.render('index', {
+    		pagename: 'awesome people',
+    		authors: ['Paul', 'Jim', 'Jane']
+		});
 	});
-};
+}
