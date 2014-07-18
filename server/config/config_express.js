@@ -40,4 +40,4 @@ module.exports = {
         
         app.use("/static", express.static(path.resolve('..','client','public')));
     }
-}
+};

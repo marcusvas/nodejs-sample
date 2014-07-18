@@ -1,4 +1,4 @@
-'use_strict'
+'use_strict';
 
 module.exports = {
     endpoints : {
