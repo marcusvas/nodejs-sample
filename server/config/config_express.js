@@ -37,7 +37,7 @@ module.exports = {
             swig.setDefaults({ cache: false });
         }
         app.use(cookieParser());
-        app.use(session());
+        app.use(session({secret: 'alter this'}));
         
         app.use(passport.initialize());
         app.use(passport.session());
@@ -51,13 +51,13 @@ module.exports = {
         app.use("/static", express.static(path.resolve('..','client','public')));
         
         // passport config
-        // TODO: move this to /coonfig/passport.js
-        var Account = require(path.resolve('..','models','user.js'));
+        // TODO: move this to /config/passport.js
+        var Account = require('../models/account');
         passport.use(new LocalStrategy(Account.authenticate()));
         passport.serializeUser(Account.serializeUser());
         passport.deserializeUser(Account.deserializeUser());
         
-        // mongoose
-        mongoose.connect('mongodb://localhost/passport_local_mongoose');
+        // TODO: move this to /config/mongodb.js
+        mongoose.connect('mongodb://localhost/baconpress');
     }
 };
