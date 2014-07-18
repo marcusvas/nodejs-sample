@@ -6,3 +6,13 @@
   </li>
 {% endfor %}
 </ul>
+
+<br><br>
+
+{% if user %}
+  <a href="/logout">Logout</a>
+{% else %}
+  <a href="/login">Login</a>
+  <br>
+  <a href="/register">Register</a>
+{% endif %}

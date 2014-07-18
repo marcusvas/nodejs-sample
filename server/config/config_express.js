@@ -6,8 +6,13 @@ var morgan = require('morgan'),
     favicon = require('serve-favicon'),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
+    cookieParser = require('cookie-parser'),
+    session = require('express-session'),
     path = require('path'),
-    swig = require('swig');
+    swig = require('swig'),
+    mongoose = require('mongoose'),
+    passport = require('passport'),
+    LocalStrategy = require('passport-local').Strategy;
     
 
 module.exports = {
@@ -31,6 +36,11 @@ module.exports = {
         	// To disable Swig's cache
             swig.setDefaults({ cache: false });
         }
+        app.use(cookieParser());
+        app.use(session({secret: 'alter this'}));
+        
+        app.use(passport.initialize());
+        app.use(passport.session());
         
         app.use(compression());
         app.use(favicon(path.resolve('..','client','favicon.ico')));
@@ -39,5 +49,15 @@ module.exports = {
         app.use(methodOverride());
         
         app.use("/static", express.static(path.resolve('..','client','public')));
+        
+        // passport config
+        // TODO: move this to /config/passport.js
+        var Account = require('../models/account');
+        passport.use(new LocalStrategy(Account.authenticate()));
+        passport.serializeUser(Account.serializeUser());
+        passport.deserializeUser(Account.deserializeUser());
+        
+        // TODO: move this to /config/mongodb.js
+        mongoose.connect('mongodb://localhost/baconpress');
     }
 };
