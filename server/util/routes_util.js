@@ -1,4 +1,5 @@
-'use strict'
+'use strict';
+
 var dir = require('node-dir');
 
 module.exports.create = function (directory, endpoint, app, router) {
@@ -9,4 +10,4 @@ module.exports.create = function (directory, endpoint, app, router) {
     });
     app.use(endpoint, router);
   });
-}
+};

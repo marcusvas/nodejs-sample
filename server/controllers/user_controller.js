@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function(app) {
 	app.get("/", function(req, res) {
 		res.render('index', {
@@ -5,4 +7,4 @@ module.exports = function(app) {
     		authors: ['Paul', 'Jim', 'Jane']
 		});
 	});
-}
+};
