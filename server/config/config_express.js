@@ -10,6 +10,7 @@ var morgan = require('morgan'),
     session = require('express-session'),
     path = require('path'),
     swig = require('swig'),
+    helmet = require('helmet'),
     mongoose = require('mongoose'),
     passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy;
@@ -36,6 +37,9 @@ module.exports = {
         	// To disable Swig's cache
             swig.setDefaults({ cache: false });
         }
+        // helmet default security
+        app.use(helmet());
+        
         app.use(cookieParser());
         app.use(session({
             secret: 'alter this',
