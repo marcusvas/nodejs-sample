@@ -11,9 +11,7 @@ var morgan = require('morgan'),
     path = require('path'),
     swig = require('swig'),
     helmet = require('helmet'),
-    mongoose = require('mongoose'),
-    passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy;
+    mongoose = require('mongoose');
     
 
 module.exports = {
@@ -47,9 +45,8 @@ module.exports = {
             saveUninitialized: true
             
         }));
-        
-        app.use(passport.initialize());
-        app.use(passport.session());
+
+        require('./passport')(app);
         
         app.use(compression());
         app.use(favicon(path.resolve('..','client','favicon.ico')));
@@ -59,12 +56,6 @@ module.exports = {
         
         app.use("/static", express.static(path.resolve('..','client','public')));
         
-        // passport config
-        // TODO: move this to /config/passport.js
-        var Account = require('../models/account');
-        passport.use(new LocalStrategy(Account.authenticate()));
-        passport.serializeUser(Account.serializeUser());
-        passport.deserializeUser(Account.deserializeUser());
         
         // TODO: move this to /config/mongodb.js
         mongoose.connect('mongodb://localhost/baconpress');

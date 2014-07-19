@@ -15,7 +15,6 @@ var app = express();
 
 require('./config/express.js').core(app,express);
 
-
 routes.create(__dirname + endpoint.root.directory, endpoint.root.route, app, express.Router());
 routes.create(__dirname + endpoint.api.v1.directory, endpoint.api.v1.route, app, express.Router());
 
