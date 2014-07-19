@@ -30,6 +30,7 @@
     "errorhandler": "^1.1.1",
     "express": "^4.5.1",
     "express-session": "^1.6.5",
+    "helmet": "^0.4.0",
     "method-override": "^2.1.0",
     "mongoose": "^3.8.13",
     "morgan": "^1.1.1",
