@@ -13,7 +13,7 @@ var app = express();
 //     next();
 // }); 
 
-require('./config/config_express.js').core(app,express);
+require('./config/express.js').core(app,express);
 
 
 routes.create(__dirname + endpoint.root.directory, endpoint.root.route, app, express.Router());
