@@ -43,6 +43,7 @@
     "swig": "^1.4.1"
   },
   "devDependencies": {
-    "gulp": "^3.8.6"
+    "gulp": "^3.8.6",
+    "gulp-jshint": "^1.7.1"
   }
 }
