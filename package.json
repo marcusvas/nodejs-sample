@@ -46,6 +46,7 @@
     "gulp": "^3.8.6",
     "gulp-concat": "^2.3.3",
     "gulp-jshint": "^1.7.1",
+    "gulp-minify-html": "^0.1.4",
     "gulp-rename": "^1.2.0",
     "gulp-uglify": "^0.3.1"
   }
