@@ -21,7 +21,7 @@ module.exports = {
         
         app.engine('html', swig.renderFile);
         app.set('view engine', 'html');
-        app.set('views', path.resolve('..','client','views'));
+        app.set('views', path.resolve(__dirname, '..', '..','client','views'));
         
         if('development' == env) {
         	app.use(morgan('dev'));
@@ -49,12 +49,12 @@ module.exports = {
         require('./passport')(app);
         
         app.use(compression());
-        app.use(favicon(path.resolve(__dirname, '..','client','favicon.ico')));
+        app.use(favicon(path.resolve(__dirname, '..', '..', 'client', 'favicon.ico')));
         app.use(bodyParser.urlencoded({extended: true}));
         app.use(bodyParser.json());
         app.use(methodOverride());
         
-        app.use("/static", express.static(path.resolve('..','client','public')));
+        app.use("/static", express.static(path.resolve(__dirname, '..', '..', 'client', 'public')));
         
         
         // TODO: move this to /config/mongodb.js
