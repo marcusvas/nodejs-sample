@@ -49,7 +49,7 @@ module.exports = {
         require('./passport')(app);
         
         app.use(compression());
-        app.use(favicon(path.resolve('..','client','favicon.ico')));
+        app.use(favicon(path.resolve(__dirname, '..','client','favicon.ico')));
         app.use(bodyParser.urlencoded({extended: true}));
         app.use(bodyParser.json());
         app.use(methodOverride());
