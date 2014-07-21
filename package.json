@@ -41,5 +41,8 @@
     "require-all": "0.0.8",
     "serve-favicon": "^2.0.1",
     "swig": "^1.4.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.6"
   }
 }
