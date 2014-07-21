@@ -8,8 +8,8 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var minifyHtml = require("gulp-minify-html");
 var minifyCss = require("gulp-minify-css");
-var spawn = require('child_process').spawn;
-var node;
+var nodemon = require('gulp-nodemon');
+var path = require('path');
 
 // Lint Task
 gulp.task('hint', function() {
@@ -40,27 +40,40 @@ gulp.task('minify-css', function () {
     .pipe(gulp.dest('./dist/client/public/css'));
 });
 
-gulp.task('server', function() {
-  if (node) node.kill();
-  node = spawn('node', ['./server/server.js'], {stdio: 'inherit'});
-  node.on('close', function (code) {
-    if (code === 8) {
-      console.log('Error detected, waiting for changes...');
-    }
-  });
+// MONITOR SERVER FOR CHANGES & RESTART
+gulp.task('nodemon', function() {
+
+  console.log('Running gulp task "NODEMON"');
+
+  nodemon({
+    script: path.resolve('server', 'server.js'),
+    ext: 'js, html',
+    ignore: ['README.md', 'node_modules/**', '.DS_Store']
+  })
+  .on('change');
+
 });
+
+// gulp.task('server', function() {
+//   if (node) node.kill();
+//   node = spawn('node', ['./server/server.js'], {stdio: 'inherit'});
+//   node.on('close', function (code) {
+//     if (code === 8) {
+//       console.log('Error detected, waiting for changes...');
+//     }
+//   });
+// });
  
 /**
  * $ gulp
  * description: start the development environment
  */
 gulp.task('watch', function() {
-  gulp.run('server');
- 
-  gulp.watch(['*.*'], function() {
-    gulp.run('server');
+  gulp.watch(['./server/**', './client/**'], function() {
+    gulp.start('nodemon');
   });
 });
+
 
 // gulp.task('default', ['hint', 'watch']);
 gulp.task('default', ['watch']);
