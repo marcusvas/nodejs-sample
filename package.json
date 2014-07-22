@@ -1,6 +1,7 @@
 {
   "name": "baconpress",
   "version": "0.0.0",
+  "private": true,
   "description": "A MVC framework with Node.js + Express.js",
   "main": "server.js",
   "scripts": {
