@@ -19,7 +19,7 @@
     "nodejs"
   ],
   "author": "Danilo Barsotti",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/danilodeveloper/baconpress/issues"
   },
