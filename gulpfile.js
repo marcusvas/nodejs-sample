@@ -49,7 +49,7 @@ gulp.task('nodemon', function() {
   nodemon({
     script: path.resolve('server', 'server.js'),
     ext: 'js, html',
-    ignore: ['README.md', 'node_modules/**', '.DS_Store']
+    ignore: ['README.md', 'node_modules/**', '.DS_Store', 'dist']
   })
   .on('change');
 
@@ -64,4 +64,4 @@ gulp.task('watch', function() {
 
 
 // gulp.task('default', ['hint', 'watch']);
-gulp.task('default', ['nodemon']); 
+gulp.task('default', ['nodemon']);
