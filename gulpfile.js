@@ -10,10 +10,11 @@ var minifyHtml = require("gulp-minify-html");
 var minifyCss = require("gulp-minify-css");
 var nodemon = require('gulp-nodemon');
 var path = require('path');
+var util = require('gulp-util');
 
 // Lint Task
 gulp.task('hint', function() {
-    return gulp.src('./server/*.js')
+    return gulp.src('./server/**/*.js')
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });
@@ -43,7 +44,7 @@ gulp.task('minify-css', function () {
 // MONITOR SERVER FOR CHANGES & RESTART
 gulp.task('nodemon', function() {
 
-  console.log('Running gulp task "NODEMON"');
+  util.log('Running gulp task "NODEMON"');
 
   nodemon({
     script: path.resolve('server', 'server.js'),
@@ -54,20 +55,7 @@ gulp.task('nodemon', function() {
 
 });
 
-// gulp.task('server', function() {
-//   if (node) node.kill();
-//   node = spawn('node', ['./server/server.js'], {stdio: 'inherit'});
-//   node.on('close', function (code) {
-//     if (code === 8) {
-//       console.log('Error detected, waiting for changes...');
-//     }
-//   });
-// });
- 
-/**
- * $ gulp
- * description: start the development environment
- */
+
 gulp.task('watch', function() {
   gulp.watch(['./server/**', './client/**'], function() {
     gulp.start('nodemon');
@@ -76,4 +64,4 @@ gulp.task('watch', function() {
 
 
 // gulp.task('default', ['hint', 'watch']);
-gulp.task('default', ['watch']);
+gulp.task('default', ['nodemon']); 

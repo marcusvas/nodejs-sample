@@ -50,6 +50,7 @@
     "gulp-minify-html": "^0.1.4",
     "gulp-nodemon": "^1.0.4",
     "gulp-rename": "^1.2.0",
-    "gulp-uglify": "^0.3.1"
+    "gulp-uglify": "^0.3.1",
+    "gulp-util": "^3.0.0"
   }
 }
