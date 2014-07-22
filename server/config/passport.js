@@ -12,3 +12,4 @@ module.exports = function (app) {
     passport.serializeUser(Account.serializeUser());
     passport.deserializeUser(Account.deserializeUser());
 };
+

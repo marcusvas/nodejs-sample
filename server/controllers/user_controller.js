@@ -2,6 +2,7 @@
 
 var passport = require('passport');
 var Account = require('../models/account');
+var Authorization = require('../util/authorization');
 
 module.exports = function(app) {
 	app.get("/", function(req, res) {
@@ -40,7 +41,7 @@ module.exports = function(app) {
 	  res.redirect('/');
 	});
 	
-	app.get('/ping', function(req, res){
+	app.get('/ping', Authorization.isAuthenticated, function(req, res){
 	  res.send("pong!", 200);
 	});
 };
