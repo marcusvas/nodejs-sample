@@ -39,7 +39,6 @@
     "passport": "^0.2.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^0.3.0",
-    "require-all": "0.0.8",
     "serve-favicon": "^2.0.1",
     "swig": "^1.4.1"
   },
