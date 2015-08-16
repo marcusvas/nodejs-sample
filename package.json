@@ -24,33 +24,53 @@
     "url": "https://github.com/danilodeveloper/baconpress/issues"
   },
   "homepage": "https://github.com/danilodeveloper/baconpress",
-  "dependencies": {
-    "body-parser": "^1.4.3",
-    "compression": "^1.0.8",
-    "cookie-parser": "^1.3.2",
-    "errorhandler": "^1.1.1",
-    "express": "^4.5.1",
-    "express-session": "^1.6.5",
-    "helmet": "^0.4.0",
-    "method-override": "^2.1.0",
-    "mongoose": "^3.8.13",
-    "morgan": "^1.1.1",
-    "node-dir": "^0.1.5",
-    "passport": "^0.2.0",
-    "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^0.3.0",
-    "serve-favicon": "^2.0.1",
-    "swig": "^1.4.1"
+ "dependencies": {
+    "async": "~0.9.0",
+    "bcrypt-nodejs": "0.0.3",/*native JS bcrypt library for NodeJS */
+    "body-parser": "~1.4.3", /* Node.js body parsing middleware */
+    "compression": "~1.0.8", /* Node.js compression middleware. */
+    "connect-ensure-login": "~0.1.1",/* Login session ensuring middleware for Connect and Express. */
+    "connect-flash": "~0.1.1",/*The flash is a special area of the session used for storing messages. */
+    "cookie-parser": "~1.3.2", /*Parse Cookie header and populate req.cookies with an object keyed by the cookie names. */
+    "email-templates": "~1.2.0", /* Node.js module for rendering beautiful emails with ejs, jade, swig, hbs, or handlebars templates and email-friendly inline CSS using juice.*/
+    "errorhandler": "~1.1.1", /*Development-only error handler middleware */
+    "express": "~4.5.1", /* Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. */
+    "express-session": "~1.6.5", /* express-session */
+    "helmet": "~0.4.0", /* help secure Express/Connect apps with various HTTP header  */
+    "lodash": "~3.5.0", /*lodash module bundles for Node.js/io.js */
+    "method-override": "~2.1.0", /* Override HTTP verbs. */
+    "mongoose": "~4.0.5", /* elegant mongodb object modeling for node.js */
+    "morgan": "~1.1.1", /*HTTP request logger middleware for node.js */
+    "multer": "~0.1.6", /*Node.js middleware for handling `multipart/form-data`. */
+    "node-dir": "~0.1.5", /*asynchronous file and directory operations for Node.js */
+    "node-uuid": "~1.4.1", /* Generate RFC-compliant UUIDs in JavaScript */
+    "nodemailer": "~1.3.1", /* Nodemailer is an easy to use module to send e-mails with Node.JS (using SMTP or sendmail or Amazon SES) and is unicode friendly - You can use any characters you like ✔*/
+    "nodemailer-sendgrid-transport": "~0.1.0", /*nodemailer-sendgrid-transport */
+    "passport": "~0.2.0",
+    "passport-facebook": "~1.0.3",
+    "passport-google-oauth": "~0.1.5",
+    "passport-local": "~1.0.0",
+    "passport-local-mongoose": "~0.3.0",
+    "passport-twitter": "~1.0.2",
+    "serve-favicon": "~2.0.1",
+    "shortid": "~2.1.3",
+    "swig": "~1.4.1",
+    "unirest": "~0.2.9",
+    "winston": "~0.8.3",
+    "express-validator":"~2.12.1"
   },
   "devDependencies": {
-    "gulp": "^3.8.6",
-    "gulp-concat": "^2.3.3",
-    "gulp-jshint": "^1.7.1",
-    "gulp-minify-css": "^0.3.7",
-    "gulp-minify-html": "^0.1.4",
-    "gulp-nodemon": "^1.0.4",
-    "gulp-rename": "^1.2.0",
-    "gulp-uglify": "^0.3.1",
-    "gulp-util": "^3.0.0"
+    "gulp": "~3.8.6",
+    "gulp-concat": "~2.3.3",
+    "gulp-jshint": "~1.7.1",
+    "gulp-minify-css": "~0.3.7",
+    "gulp-minify-html": "~0.1.4",
+    "gulp-nodemon": "~1.0.4",
+    "gulp-rename": "~1.2.0",
+    "gulp-uglify": "~0.3.1",
+    "gulp-util": "~3.0.0",
+    "should": "~4.3.1",
+    "superagent": "~0.21.0",
+    "supertest": "~0.15.0"
   }
 }
