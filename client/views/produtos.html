@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register Page</title>
+    </head>
+    <body>
+        <h1>Cadastrar novo produto</h1>
+        <form action="/produtos" method="post" style="max-width: 300px;">
+            Nome: <input type="text" name="nome"/></br>
+            Descrição: <textarea rows="4" cols="50" name="descricao"></textarea></br>
+            <input type="submit" value="Submit"/></br>
+        </form>
+        <h1>Produtos</h1>
+        <ul>
+            {% for produto in produtos %}
+              <li{% if loop.first %} class="first"{% endif %}>
+                <a href="/produtos/{{produto._id.toString()}}"> {{ produto.nome }}</a>
+              </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

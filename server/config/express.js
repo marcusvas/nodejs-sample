@@ -100,10 +100,8 @@ module.exports = {
         app.use("/static", express.static(path.resolve(__dirname, '..', '..', 'client', 'public')));
 
         // TODO: move this to /config/mongodb.javascript
-
-        
-        //mongoose.connect('mongodb://localhost/mydb');
-        //logger.info('MongoDB is running local!!');
+        mongoose.connect('mongodb://ecommerce-dev:20150816@ds033163.mongolab.com:33163/ecommerce');
+        logger.info('MongoDB is running on mongolab!!');
 
         // Creating routes
         routes.create(path.resolve(__dirname, '..', endpoint.root.directory), endpoint.root.route, app, passport, express.Router());
@@ -112,7 +110,7 @@ module.exports = {
 };
 
 var mongooseConnect = function mongooseConnect() {
-    mongoose.connect('mongodb://localhost/mydb');
+    mongoose.connect('mongodb://ecommerce-dev:20150816@ds033163.mongolab.com:33163/ecommerce');
 };
 
 var saveReturnToAfterLogin = function saveReturnToAfterLogin(req, res, next) {
