@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register Page</title>
+    </head>
+    <body>
+        <h1>Cadastrar novo cliente</h1>
+        <form action="/clientes" method="post" style="max-width: 300px;">
+            Nome: <input type="text" name="nome"/></br>
+            CPF: <input type="text" name="cpf"></br>
+            <input type="submit" value="Submit"/></br>
+        </form>
+        <h1>Clientes</h1>
+        <ul>
+            {% for cli in clientes %}
+              <li>
+                <a href="/clientes/{{cli._id.toString()}}"> {{ cli.nome }}</a>
+              </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

@@ -2,38 +2,33 @@
 
 module.exports = function ProdutoController(router, passport) {
 
-    var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn,
-        logger = require('../util/logger'),
-        async = require('async'),
-        _ = require('lodash'),
-        Produto = require('../models/produto.js');
+    var Cliente = require('../models/cliente.js');
 
 
-    router.post('/produtos', function(req, res) {
-        logger.info("descricao" + req.body.descricao);
+    router.post('/clientes', function(req, res) {
         var param = {
             'nome' : req.body.nome,
-            'descricao': req.body.descricao
+            'cpf': req.body.cpf
         };
 
-        var produto = new Produto(param);
+        var _cli = new Cliente(param);
         
-        produto.save(
+        _cli.save(
                 function(error, produto) {
                     if (!error){
-                        res.redirect('/produtos');
+                        res.redirect('/clientes');
                         //return res.status(200).json({'produto': produto});
                     }
                 });
     });
 
 
-    router.get('/produtos', function(req, res) {
-        Produto.find().exec(
-            function (error, produtos){
+    router.get('/clientes', function(req, res) {
+        Cliente.find().exec(
+            function (error, clientes){
                 if (!error){
-                    res.render('produtos', {
-                            'produtos':produtos
+                    res.render('clientes', {
+                            'clientes':clientes
                         });
                 }
             }   
