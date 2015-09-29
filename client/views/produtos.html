@@ -5,7 +5,7 @@
     </head>
     <body>
         <h1>Produtos</h1>
-        <a href="/produtos/new">Cadastrar novo</a>
+        <a href="/produtos/new">Cadastrar novo</a> | <a href="/carrinho">Meu carrinho</a>
         <ul>
             {% for produto in produtos %}
               <li{% if loop.first %} class="first"{% endif %}>

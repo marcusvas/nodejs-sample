@@ -1,5 +1,5 @@
 {
-  "name": "baconpress",
+  "name": "ecommerce",
   "version": "0.0.0",
   "private": true,
   "description": "A MVC framework with Node.js + Express.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/danilodeveloper/baconpress.git"
+    "url": "git://github.com/marcusvas/nodejs-sample.git"
   },
   "keywords": [
     "mvc",
@@ -19,12 +19,8 @@
     "expressjs",
     "nodejs"
   ],
-  "author": "Danilo Barsotti",
+  
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/danilodeveloper/baconpress/issues"
-  },
-  "homepage": "https://github.com/danilodeveloper/baconpress",
  "dependencies": {
     "async": "~0.9.0",
     "bcrypt-nodejs": "0.0.3",

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register Page</title>
+    </head>
+    <body>
+        <h1>Carrinho</h1>
+        
+        <ul>
+            {% for carrinhoItem in carrinho.itens %}
+              <li>
+                {{ carrinhoItem.produto.nome }} || {{ carrinhoItem.produto.qtdItens }}
+                <a href="/carrinho/delete/{{carrinhoItem.produto._id.toString()}}"> Excluir</a>
+              </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
