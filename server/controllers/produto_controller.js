@@ -12,12 +12,17 @@ module.exports = function ProdutoController(router, passport) {
     router.post('/produtos', function(req, res) {
         logger.info("descricao" + req.body.descricao);
         var param = {
+            'id' : req.body.id,
             'nome' : req.body.nome,
             'descricao': req.body.descricao
         };
 
         var produto = new Produto(param);
         
+        var query = {'_id':id};
+        CommentModel.findOneAndUpdate(query, produto, {upsert:false}).exec(callback);
+
+    
         produto.save(
                 function(error, produto) {
                     if (!error){
