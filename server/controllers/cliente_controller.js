@@ -14,7 +14,7 @@ module.exports = function ProdutoController(router, passport) {
         var _cli = new Cliente(param);
         
         _cli.save(
-                function(error, produto) {
+                function(error, cliente) {
                     if (!error){
                         res.redirect('/clientes');
                         //return res.status(200).json({'produto': produto});
@@ -37,8 +37,8 @@ module.exports = function ProdutoController(router, passport) {
     });
     
 
-    router.get('/produtos/:id', function(req, res) {
-                Produto.findById(req.params.id, function (err, produto) {
+    router.get('/clientes/:id', function(req, res) {
+                Cliente.findById(req.params.id, function (err, produto) {
                         res.render('produto_detalhes', {
                             'produto':produto
                         });

@@ -4,17 +4,14 @@
         <title>Register Page</title>
     </head>
     <body>
-        <h1>Cadastrar novo produto</h1>
-        <form action="/produtos" method="post" style="max-width: 300px;">
-            Nome: <input type="text" name="nome"/></br>
-            Descrição: <textarea rows="4" cols="50" name="descricao"></textarea></br>
-            <input type="submit" value="Submit"/></br>
-        </form>
         <h1>Produtos</h1>
+        <a href="/produtos/"
         <ul>
             {% for produto in produtos %}
               <li{% if loop.first %} class="first"{% endif %}>
-                <a href="/produtos/{{produto._id.toString()}}"> {{ produto.nome }}</a>
+                {{ produto.nome }}
+                <a href="/produtos/{{produto._id.toString()}}"> Ver</a>
+                <a href="/produtos/{{produto._id.toString()}}/edit"> Editar</a>
               </li>
             {% endfor %}
         </ul>

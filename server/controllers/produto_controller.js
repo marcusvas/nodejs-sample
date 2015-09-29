@@ -12,24 +12,42 @@ module.exports = function ProdutoController(router, passport) {
     router.post('/produtos', function(req, res) {
         logger.info("descricao" + req.body.descricao);
         var param = {
-            'id' : req.body.id,
             'nome' : req.body.nome,
             'descricao': req.body.descricao
         };
 
         var produto = new Produto(param);
         
-        var query = {'_id':id};
-        CommentModel.findOneAndUpdate(query, produto, {upsert:false}).exec(callback);
-
-    
-        produto.save(
+        var _id = req.body.id;
+        
+        if (!_id){
+            //cria um novo produto
+            produto.save(
                 function(error, produto) {
                     if (!error){
                         res.redirect('/produtos');
                         //return res.status(200).json({'produto': produto});
                     }
                 });
+        }
+        else{
+            //atualiza um produto
+            logger.info(req.body.id);
+            var query = {'_id':_id};
+            produto._id=_id;
+            Produto.findOneAndUpdate(query, produto, {upsert:false}).exec(
+            function(error, produto) {
+                    if (!error){
+                        res.redirect('/produtos');
+                    }else{
+                        throw error;
+                        
+                    }
+                });
+        }
+        
+        
+       
     });
 
 
@@ -50,6 +68,14 @@ module.exports = function ProdutoController(router, passport) {
     router.get('/produtos/:id', function(req, res) {
                 Produto.findById(req.params.id, function (err, produto) {
                         res.render('produto_detalhes', {
+                            'produto':produto
+                        });
+                });
+    });
+    
+    router.get('/produtos/:id/edit', function(req, res) {
+                Produto.findById(req.params.id, function (err, produto) {
+                        res.render('produto_form', {
                             'produto':produto
                         });
                 });

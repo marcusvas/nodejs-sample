@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register Page</title>
+    </head>
+    <body>
+        <h1>Produto</h1>
+        <form action="/produtos" method="post" style="max-width: 300px;">
+            <input type="hidden" name="id" value="{{produto._id.toString()}}">
+            Nome: <input type="text" name="nome" value="{{produto.nome}}"/></br>
+            Descrição: <textarea rows="4" cols="50" name="descricao">{{produto.descricao}}</textarea></br>
+            <input type="submit" value="Submit"/></br>
+        </form>
+    </body>
+</html>
