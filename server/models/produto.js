@@ -7,6 +7,8 @@ var mongoose = require('mongoose'),
     var Produto = new Schema({
 	    nome: String,
 	    descricao: String,
+	    valor:Number,
+	    ativo: { type: Boolean, 'default' : true },
 	    dataCadastro: { type: Date, 'default' : Date.now },
 	});
 

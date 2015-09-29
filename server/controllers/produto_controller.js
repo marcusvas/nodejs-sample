@@ -22,6 +22,7 @@ module.exports = function ProdutoController(router, passport) {
         
         if (!_id){
             //cria um novo produto
+            produto.ativo=true;
             produto.save(
                 function(error, produto) {
                     if (!error){
@@ -52,7 +53,14 @@ module.exports = function ProdutoController(router, passport) {
 
 
     router.get('/produtos', function(req, res) {
-        Produto.find().exec(
+        
+        var params = {
+               conditions: {
+                   ativo: true
+               }
+           };
+           
+        Produto.find({ativo:true}).exec(
             function (error, produtos){
                 if (!error){
                     res.render('produtos', {
@@ -64,7 +72,11 @@ module.exports = function ProdutoController(router, passport) {
        
     });
     
-
+    
+    router.get('/produtos/new', function(req, res) {
+        res.render('produto_form');
+    });
+    
     router.get('/produtos/:id', function(req, res) {
                 Produto.findById(req.params.id, function (err, produto) {
                         res.render('produto_detalhes', {
@@ -80,5 +92,25 @@ module.exports = function ProdutoController(router, passport) {
                         });
                 });
     });
+    
+    router.get('/produtos/:id/delete', function(req, res) {
+            var _id = req.params.id;
+            logger.info(req.body.id);
+             var produto = new Produto();
+            var query = {'_id':_id};
+            produto._id=_id;
+            produto.ativo = false;
+            Produto.findOneAndUpdate(query, produto, {upsert:false}).exec(
+            function(error, produto) {
+                    if (!error){
+                        res.redirect('/produtos');
+                    }else{
+                        throw error;
+                        
+                    }
+                });
+    });
+    
+  
 
  };   

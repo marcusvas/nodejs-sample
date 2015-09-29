@@ -5,13 +5,14 @@
     </head>
     <body>
         <h1>Produtos</h1>
-        <a href="/produtos/"
+        <a href="/produtos/new">Cadastrar novo</a>
         <ul>
             {% for produto in produtos %}
               <li{% if loop.first %} class="first"{% endif %}>
                 {{ produto.nome }}
                 <a href="/produtos/{{produto._id.toString()}}"> Ver</a>
                 <a href="/produtos/{{produto._id.toString()}}/edit"> Editar</a>
+                <a href="/produtos/{{produto._id.toString()}}/delete"> Excluir</a>
               </li>
             {% endfor %}
         </ul>
