@@ -13,7 +13,8 @@ module.exports = function ProdutoController(router, passport) {
         logger.info("descricao" + req.body.descricao);
         var param = {
             'nome' : req.body.nome,
-            'descricao': req.body.descricao
+            'descricao': req.body.descricao,
+                 'valor': req.body.valor
         };
 
         var produto = new Produto(param);
