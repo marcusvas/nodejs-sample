@@ -1,0 +1,18 @@
+<h1>{{ pagename|title }}</h1>
+<ul>
+{% for author in authors %}
+  <li{% if loop.first %} class="first"{% endif %}>
+    {{ author }}
+  </li>
+{% endfor %}
+</ul>
+
+<br><br>
+
+{% if user %}
+  <a href="/logout">Logout</a>
+{% else %}
+  <a href="/login">Login</a>
+  <br>
+  <a href="/register">Register</a>
+{% endif %}

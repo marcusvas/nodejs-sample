@@ -7,6 +7,8 @@ module.exports = function ProdutoController(router, passport) {
         async = require('async'),
         _ = require('lodash'),
         Produto = require('../models/produto.js');
+        
+    var Authorization = require('../util/authorization');
 
 
     router.post('/produtos', function(req, res) {
@@ -52,8 +54,7 @@ module.exports = function ProdutoController(router, passport) {
        
     });
 
-
-    router.get('/produtos', function(req, res) {
+    router.get('/produtos', Authorization.isAuthenticated, function(req, res) {
         
         var params = {
                conditions: {
@@ -71,6 +72,31 @@ module.exports = function ProdutoController(router, passport) {
             }   
             );
        
+    });
+
+    router.get('/', function(req, res) {
+        
+        var params = {
+               conditions: {
+                   ativo: true
+               }
+           };
+           
+        Produto.find({ativo:true}).exec(
+            function (error, produtos){
+                if (!error){
+                    res.render('index', {
+                            'produtos':produtos
+                        });
+                }
+            }   
+            );
+       
+    });
+    
+   
+    router.get('/aboutus', function(req, res) {
+        res.render('aboutus');
     });
     
     

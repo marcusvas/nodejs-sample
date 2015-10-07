@@ -5,7 +5,8 @@ var mongoose = require('mongoose'),
 
 
     var Carrinho = new Schema({
-	    itens: [{ type: Schema.Types.ObjectId, ref: 'CarrinhoItem' }]
+	    itens: [{ type: Schema.Types.ObjectId, ref: 'CarrinhoItem' }],
+	     emailCliente: String,
 	});
 
 module.exports = mongoose.model('Carrinho', Carrinho);

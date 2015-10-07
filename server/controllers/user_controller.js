@@ -5,8 +5,8 @@ var Account = require('../models/account');
 var Authorization = require('../util/authorization');
 
 module.exports = function(app) {
-	app.get("/", function(req, res) {
-		res.render('index', {
+	app.get("/old", function(req, res) {
+		res.render('index2', {
     		pagename: 'awesome people',
     		authors: ['Paul', 'Jim', 'Jane'],
     		user: req.user
@@ -33,7 +33,7 @@ module.exports = function(app) {
 	});
 	
 	app.post('/login', passport.authenticate('local'), function(req, res) {
-	  res.redirect('/');
+	  res.redirect('/produtos');
 	});
 	
 	app.get('/logout', function(req, res) {

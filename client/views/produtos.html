@@ -4,8 +4,11 @@
         <title>Register Page</title>
     </head>
     <body>
+        {% if user %}
+          <a href="/logout">Logout</a>
+        {% endif %}
         <h1>Produtos</h1>
-        <a href="/produtos/new">Cadastrar novo</a> | <a href="/carrinho">Meu carrinho</a>
+        <a href="/produtos/new">Cadastrar novo</a>
         <ul>
             {% for produto in produtos %}
               <li{% if loop.first %} class="first"{% endif %}>

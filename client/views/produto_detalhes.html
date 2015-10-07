@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Register Page</title>
-    </head>
-    <body>
-        <h1>Detalhes do produto:</h1>
-            
-             Nome: {{ produto.nome }} </br>
-            Descição: {{ produto.descricao }} </br> 
-            Valor: {{ produto.valor }} </br> 
-            </br></br>
-            
-             <a href="/carrinho/add/{{produto._id.toString() }} "> Incluir no Carrinho de Compras</a>
-             
-    </body>
-</html>
+{% extends 'layout.html' %} 
+
+{% block main %} 
+
+        <div class="block">
+            <h1 class="heading wow fadeInUp" data-wow-duration="300ms" data-wow-delay="300ms"> <span>Detalhes</span> do <span> produto</span></h1>
+            <p class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="400ms">{{ produto.nome }}</p>
+            <p>{{ produto.descricao }}</p>
+            <p>R${{ produto.valor }}</p>
+            <a class="btn btn-default pull-right"  href="/carrinho/add/{{produto._id.toString() }}" role="button">Incluir no Carrinho de Compras</a>
+        </div>
+                
+{% endblock %}

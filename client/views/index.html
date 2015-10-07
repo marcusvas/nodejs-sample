@@ -1,18 +1,36 @@
-<h1>{{ pagename|title }}</h1>
-<ul>
-{% for author in authors %}
-  <li{% if loop.first %} class="first"{% endif %}>
-    {{ author }}
-  </li>
-{% endfor %}
-</ul>
+{% extends 'layout.html' %} 
 
-<br><br>
+{% block header %} 
+ <section id="hero-area">
+      <img class="img-responsive" src="/static/images/header.jpg" alt="">
+    </section>
+{% endblock %}
 
-{% if user %}
-  <a href="/logout">Logout</a>
-{% else %}
-  <a href="/login">Login</a>
-  <br>
-  <a href="/register">Register</a>
-{% endif %}
+{% block main %} 
+
+        <div class="block">
+            <h1 class="heading wow fadeInUp" data-wow-duration="300ms" data-wow-delay="300ms"> <span>Escolha</span> seu <span>prato</span></h1>
+            <p class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="400ms">Fácil, Rápido, Delicioso. </p>
+            <div class="pricing-list">
+                <ul>
+                    {% for produto in produtos %}
+                    <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="300ms">
+                        <div class="item">
+                            <div class="item-title">
+                                <h2>{{ produto.nome }}</h2>
+                                <div class="border-bottom"></div>
+                                <span>R$ {{ produto.valor }}</span>
+                            </div>
+                            <p>{{ produto.descricao }}</p>
+                            <p>
+                            <a class="btn btn-default"  href="/produtos/{{ produto.id.toString() }}" role="button">Ver detalhes do Produto</a>
+                            </p>
+                        </div>
+                    </li>
+                      {% endfor %}
+                </ul>
+                
+            </div>
+        </div>
+                
+{% endblock %}

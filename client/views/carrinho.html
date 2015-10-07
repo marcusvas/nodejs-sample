@@ -1,18 +1,45 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Register Page</title>
-    </head>
-    <body>
-        <h1>Carrinho</h1>
-        
-        <ul>
-            {% for carrinhoItem in carrinho.itens %}
-              <li>
-                {{ carrinhoItem.produto.nome }} || {{ carrinhoItem.produto.qtdItens }}
-                <a href="/carrinho/delete/{{carrinhoItem.produto._id.toString()}}"> Excluir</a>
-              </li>
-            {% endfor %}
-        </ul>
-    </body>
-</html>
+{% extends 'layout.html' %} 
+
+{% block main %} 
+
+        <div class="block">
+            <h1 class="heading wow fadeInUp" data-wow-duration="300ms" data-wow-delay="300ms"> <span>Confira</span> seu <span>Carrinho</span></h1>
+            <p class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="400ms">Fácil, Rápido, Delicioso. </p>
+            <div class="pricing-list">
+                <ul>
+                    {% if message  %} <p class="bg-warning">{{message}}</p>{% endif %}
+                    {% for carrinhoItem in carrinho %}
+                    <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="300ms">
+                        <div class="item">
+                            <div class="item-title">
+                                <h2>{{ carrinhoItem.produto.nome }}</h2>
+                                <div class="border-bottom"></div>
+                                <span>R$ {{ carrinhoItem.produto.valor }}</span>
+                            </div>
+                            <p>{{ carrinhoItem.produto.descricao }}</p>
+                            <p>
+                            <a class="btn btn-default"  href="/carrinho/delete/{{carrinhoItem.produto._id.toString()}}" role="button">Excluir</a>
+                            </p>
+                        </div>
+                    </li>
+                      {% endfor %}
+                      
+                       {% if carrinho.length > 0  %} 
+                        <form action="/carrinho/finalizar" method="post">
+                              <div class="form-group" class="col-md-12">
+                                <label for="exampleInputEmail1">Informe seu email</label>
+                                <input type="email" name="email" maxlength="50" class="" id="exampleInputEmail1" placeholder="Email">
+                              </div>
+                              <p align="center">
+                                  <button type="submit" class="btn btn-info pull-center">Finalizar Pedido</button>
+                              </p>
+                        </form>
+                       
+                       {% endif %}
+                       
+                </ul>
+                
+            </div>
+        </div>
+                
+{% endblock %}

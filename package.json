@@ -6,7 +6,8 @@
   "main": "server.js",
   "LOGGER_LEVEL": "tests",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./server/server.js",
+    "test": "mocha ./server/test --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -54,7 +55,8 @@
     "swig": "~1.4.1", 
     "unirest": "~0.2.9",
     "winston": "~0.8.3",
-    "express-validator":"~2.12.1"
+    "express-validator":"~2.12.1",
+    "hashmap": "~2.0.3"
   },
   "devDependencies": {
     "gulp": "~3.8.6",
@@ -68,6 +70,8 @@
     "gulp-util": "~3.0.0",
     "should": "~4.3.1",
     "superagent": "~0.21.0",
-    "supertest": "~0.15.0"
+    "supertest": "~0.15.0",
+    "expect.js": "~0.3.1"
+  
   }
 }
